@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1><a hre="{{ url_for('index')}}">Programming websites with python!</a></h1>
+<h2>Getting Started</h2>
+<ol>
+    <li>The Inumerable Wake</li>
+    <li>Escape Me</li>
+    <li>Fever Dream</li>
+    <li>Metempsychosis</li>
+    <li>Blossoming Beelzebub</li>
+</ol>
+{% for post in posts %}
+    <a href="{{ url_for('post', post_id=post['id']) }}">
+        <h2>{{ post['title'] }}</h2>
+    </a>
+    <span>{{ post['created'] }}</span>
+
+    <a href="{{ url_for('edit', id=post['id']) }}">
+        <span class="badge badge-warning">Edit</span>
+    </a>
+
+    <hr>
+{% endfor %}
+{% endblock %}
